@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Campito | Fútbol 5 Premium</title>
+    <!-- Fuentes e Iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="bg-overlay"></div>
+
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-futbol"></i> EL CAMPITO
+        </div>
+        <a href="#booking" class="nav-btn">RESERVAR</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>JUGÁ COMO <span class="highlight">PROFESIONAL</span></h1>
+            <p>cancha ubicada en Moreno, Santa Brigida. Pasto sintético de última generación e iluminación LED.</p>
+            <a href="#booking" class="cta-button">RESERVAR AHORA</a>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <!-- Sección de Reservas -->
+        <section id="booking" class="glass-panel">
+            <div class="section-header">
+                <h2><i class="fa-regular fa-calendar-days"></i> Tu Reserva</h2>
+                <p>Elegí tu fecha para ver disponibilidad</p>
+            </div>
+
+            <div class="date-selector-container">
+                <div class="input-wrapper">
+                    <input type="date" id="datePicker">
+                </div>
+            </div>
+
+            <div id="slotsContainer" class="slots-grid">
+                <div class="empty-state">
+                    <i class="fa-solid fa-arrow-pointer"></i>
+                    <p>Selecciona una fecha arriba para comenzar</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mapa -->
+        <section class="glass-panel map-section">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-location-dot"></i> Ubicación</h2>
+                <p>Río de la Plata y Calderón de la Barca, Moreno</p>
+            </div>
+            <div class="map-frame">
+                <!-- Mapa embebido genérico centrado en Moreno -->
+                <iframe 
+                    src="https://www.google.com/maps?q=Río+de+la+Plata+y+Calderón+de+la+Barca,+Moreno,+Buenos+Aires&output=embed" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 El Campito Fútbol 5. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Modal de Confirmación -->
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Confirmar Partido</h3>
+                <button onclick="closeModal()" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="summary">
+                    <div class="summary-item">
+                        <i class="fa-regular fa-clock"></i>
+                        <span id="modalTime">--:--</span>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fa-regular fa-calendar"></i>
+                        <span id="modalDate">--/--</span>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fa-solid fa-tag"></i>
+                        <span id="modalPrice" style="color:var(--primary);">$0</span>
+                    </div>
+                </div>
+                
+                <form onsubmit="event.preventDefault(); confirmBooking();">
+                    <div class="input-group">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="clientName" placeholder="Nombre del Responsable" required autocomplete="off">
+                    </div>
+                    <div class="input-group">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <input type="tel" id="clientPhone" placeholder="WhatsApp de Contacto" required autocomplete="off">
+                    </div>
+                    <button type="submit" class="confirm-btn">Confirmar Reserva</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
